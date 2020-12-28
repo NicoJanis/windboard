@@ -67,21 +67,18 @@
         ;
     }
     
-    section {
-        position: relative;
-        z-index: -1;
-        padding-top: 60px;
-    }
-    
     nav ul li a {
-        text-decoration: none;
+        text-decoration: underline;
         color: #fff;
         font-size: 16px;
     }
     
     nav a:hover {
         color: #56cfff;
-        text-decoration: underline;
+    }
+    
+    nav i:hover {
+        text-decoration: underline !important;
     }
     
     .menu-icon {
@@ -96,7 +93,7 @@
         display: none;
     }
     
-    @media(max-width: 786px) {
+    @media(max-width: 1100px) {
         .logo {
             position: fixed;
             top: 0;
