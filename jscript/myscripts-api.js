@@ -14,8 +14,9 @@ button.addEventListener('click', function(name) {
             var tempValue = Math.round(data['main']['temp'] - 273.15);
             var nameValue = data['name'];
             var descValue = data['weather'][0]['description'];
-            var tempicon = data['main']
             var windValue = data['wind']['speed'];
+            var lon = data['coord']['lon'];
+            var lat = data['coord']['lat'];
 
             main.innerHTML = nameValue;
             desc.innerHTML = "Desc - " + descValue;
