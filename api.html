@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="css/stylesheet-api.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <!-- style Map   -->
     <style>
         #map {
             position: absolute;
@@ -23,81 +25,83 @@
 <body>
     <div class="main">
 
-
+        <!--  Input value   -->
         <div class="input">
             <input type="text" placeholder="Enter the city" class="input_text">
             <input type="submit" value="Submit" class="submit">
         </div>
     </div>
 
+    <!-- set output value, dipslayed in html conatiner   -->
     <div class="container" style="width: auto; height: auto;">
+
         <div class="card">
             <h1 class="name" id="name"></h1>
             <p class="temp"></p>
             <p class="clouds"></p>
             <p class="desc"></p>
             <p class="wind"></p>
+
             <div id="map" style="width: auto; height: auto"></div>
 
+
             <script>
-                var input = document.querySelector('.input_text');
-                fetch('https://api.openweathermap.org/data/2.5/weather?q=' + input.value + '&appid=5f0ce22b4d50f95750ee5c6d75d04a19')
-                    .then(response => response.json())
-                    .then(data => {
-
-                        var lon = data['coord']['lon'];
-                        var lat = data['coord']['lat'];
-                        alert(lon);
-                        alert(lat);
-
-
-                    })
-
-                .catch(err => alert("Cityname not found"));
-
+                //set view
                 var map = L.map('map').setView([0, 0], 2);
 
+                //set Map        
                 L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=hYjlwswSlN8Zv1WWYFGT', {
                     attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
                 }).addTo(map);
-                var marker = L.marker([lon, lat]).addTo(map);
-                marker.bindPopup("<b> input_text </b>");
+
+
+
+
+                //calls API
+                var input = document.querySelector('.input_text');
+                var main = document.querySelector('#name');
+                var temp = document.querySelector('.temp');
+                var desc = document.querySelector('.desc');
+                var clouds = document.querySelector('.clouds');
+                var wind = document.querySelector('.wind');
+                var button = document.querySelector('.submit');
+
+
+
+                button.addEventListener('click', function(name) {
+                    fetch('https://api.openweathermap.org/data/2.5/weather?q=' + input.value + '&appid=5f0ce22b4d50f95750ee5c6d75d04a19')
+                        .then(response => response.json())
+                        .then(data => {
+                            var tempValue = Math.round(data['main']['temp'] - 273.15);
+                            var nameValue = data['name'];
+                            var descValue = data['weather'][0]['description'];
+                            var tempicon = data['main']
+                            var windValue = data['wind']['speed'];
+                            var lonValue = data['coord']['lon'];
+                            var latValue = data['coord']['lat'];
+
+                            main.innerHTML = nameValue;
+                            desc.innerHTML = "Desc - " + descValue;
+                            temp.innerHTML = "Temp - " + tempValue + "°";
+                            wind.innerHTML = "Windspeed - " + windValue + " knots";
+
+
+                            //Map marker configs
+
+                            var marker = L.marker([latValue, lonValue]).addTo(map);
+                            marker.bindPopup("<b>" + input.value + "</b>" + "<br>" + "Desc - " + descValue + "<br>" + "Temp - " + tempValue + "<br>" + "Windspeed - " + windValue);
+
+
+                            input.value = "";
+                        })
+
+                    .catch(err => alert("Cityname not found"));
+                })
             </script>
 
 
         </div>
     </div>
-    <script>
-        var input = document.querySelector('.input_text');
-        var main = document.querySelector('#name');
-        var temp = document.querySelector('.temp');
-        var desc = document.querySelector('.desc');
-        var clouds = document.querySelector('.clouds');
-        var wind = document.querySelector('.wind');
-        var button = document.querySelector('.submit');
-
-
-        button.addEventListener('click', function(name) {
-            fetch('https://api.openweathermap.org/data/2.5/weather?q=' + input.value + '&appid=5f0ce22b4d50f95750ee5c6d75d04a19')
-                .then(response => response.json())
-                .then(data => {
-                    var tempValue = Math.round(data['main']['temp'] - 273.15);
-                    var nameValue = data['name'];
-                    var descValue = data['weather'][0]['description'];
-                    var tempicon = data['main']
-                    var windValue = data['wind']['speed'];
-
-                    main.innerHTML = nameValue;
-                    desc.innerHTML = "Desc - " + descValue;
-                    temp.innerHTML = "Temp - " + tempValue;
-                    wind.innerHTML = "Windspeed - " + windValue;
-                    input.value = "";
-
-                })
-
-            .catch(err => alert("Cityname not found"));
-        })
-    </script>
 
 
 

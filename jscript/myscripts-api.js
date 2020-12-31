@@ -22,6 +22,8 @@ button.addEventListener('click', function(name) {
             desc.innerHTML = "Desc - " + descValue;
             temp.innerHTML = "Temp - " + tempValue;
             wind.innerHTML = "Windspeed - " + windValue;
+            print(lon);
+            print(lat);
             input.value = "";
 
         })
