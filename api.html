@@ -41,6 +41,7 @@
             <p class="clouds"></p>
             <p class="desc"></p>
             <p class="wind"></p>
+            <p class="nr-test"></p>
 
             <div id="map" style="width: auto; height: auto"></div>
 
@@ -65,6 +66,8 @@
                 var clouds = document.querySelector('.clouds');
                 var wind = document.querySelector('.wind');
                 var button = document.querySelector('.submit');
+                var theMarker = {};
+
 
 
 
@@ -86,10 +89,15 @@
                             wind.innerHTML = "Windspeed - " + windValue + " knots";
 
 
-                            //Map marker configs
+                            //add map marker and remove when a new one is added
 
-                            var marker = L.marker([latValue, lonValue]).addTo(map);
-                            marker.bindPopup("<b>" + input.value + "</b>" + "<br>" + "Desc - " + descValue + "<br>" + "Temp - " + tempValue + "<br>" + "Windspeed - " + windValue);
+                            marker.bindPopup("<b>" + nameValue + "</b>" + "<br>" + "Desc - " + descValue + "<br>" + "Temp - " + tempValue + "<br>" + "Windspeed - " + windValue);
+                            if (theMarker != undefined) {
+                                map.removeLayer(theMarker);
+                            };
+                            theMarker = L.marker([latValue, lonValue]).addTo(map);
+                            theMarker.bindPopup("<b>" + nameValue + "</b>" + "<br>" + "Desc - " + descValue + "<br>" + "Temp - " + tempValue + "<br>" + "Windspeed - " + windValue);
+
 
 
                             input.value = "";
