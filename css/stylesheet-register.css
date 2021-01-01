@@ -108,7 +108,7 @@ form {
     padding: 0 20px;
     border-radius: 20px;
     font-family: "Muli-Bold";
-    background: none;
+    background: rgba(255, 255, 255, 0.5);
 }
 
 .form-control:focus {
@@ -245,6 +245,3 @@ button:hover:before {
         padding-left: 15px;
     }
 }
-
-
-/*# sourceMappingURL=style.css.map */
