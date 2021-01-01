@@ -9,17 +9,6 @@
     <link rel="stylesheet" href="css/stylesheet-api.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-
-    <!-- style Map   -->
-    <style>
-        #map {
-            position: absolute;
-            top: 255px;
-            bottom: 0;
-            left: 1090px;
-            right: 0;
-        }
-    </style>
 </head>
 
 <body>
@@ -85,8 +74,8 @@
 
                             main.innerHTML = nameValue;
                             desc.innerHTML = "Desc - " + descValue;
-                            temp.innerHTML = "Temp - " + tempValue + "°";
-                            wind.innerHTML = "Windspeed - " + windValue + " knots";
+                            temp.innerHTML = "Temperature - " + tempValue + "°C";
+                            wind.innerHTML = "Windspeed - " + windValue + " kn";
 
 
                             //add map marker and remove when a new one is added
