@@ -47,9 +47,9 @@ input[type="submit"] {
 .card {
     width: 50%;
     background: #e7e7e7;
-    height: 40vh;
+    height: auto;
     margin: 50px auto;
-    border-radius: 2px;
+    border-radius: 20px;
 }
 
 .close {
