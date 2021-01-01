@@ -5,11 +5,9 @@
 }
 
 #map {
-    position: absolute;
-    top: 255px;
-    bottom: 0;
-    left: 1090px;
-    right: 0;
+	width: 80%;
+	margin: auto;
+	height: 40vh;
 }
 
 body {
@@ -24,16 +22,21 @@ body {
 
 input[type="submit"] {
     padding: 15px 30px;
-    background: #e7e7e7;
+    background: #56cfff;
     border: none;
     border-radius: 1px;
     font-family: "Nunito", sans-serif;
     font-weight: bold;
     font-size: 20px;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover {
+	background: #2a3f95;
 }
 
 .input input[type="text"] {
-    width: 600px;
+    width: 80%;
     height: 55px;
     padding: 5px 10px;
     background: #e7e7e7;
@@ -45,11 +48,12 @@ input[type="submit"] {
 }
 
 .card {
-    width: 50%;
+    width: 90%;
     background: #e7e7e7;
-    height: 40vh;
+    height: auto;
     margin: 50px auto;
     border-radius: 2px;
+	padding: 20px 0;
 }
 
 .close {
@@ -69,3 +73,12 @@ input[type="submit"] {
     margin: 40px 0;
     font-size: 20px;
 }
+
+/*
+Colours:
+Black: #161616
+Blue1: #2a3f95
+Blue2: #56cfff
+Yellow1: #d3fc78
+Yellow2: #e2b72c
+*/
