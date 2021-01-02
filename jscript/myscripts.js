@@ -4,7 +4,7 @@ $(document).ready(function() {
     });
 });
 
-// Scrolling Effect
+// Scrolling Effect index page
 
 $(window).on("scroll", function() {
     if ($(window).scrollTop()) {
