@@ -21,28 +21,25 @@ body {
     margin: 100px auto;
 }
 
-input[type="submit"] {
-    padding: 15px 30px;
+.submit {
+	width: 19.9%;
     background: #56cfff;
     border: none;
-    border-radius: 1px;
     font-family: "Nunito", sans-serif;
     font-weight: bold;
     font-size: 20px;
 	cursor: pointer;
 }
 
-input[type="submit"]:hover {
+.submit:hover {
 	background: #2a3f95;
 }
 
-.input input[type="text"] {
+.input_text {
     width: 80%;
     height: 55px;
-    padding: 5px 10px;
     background: #e7e7e7;
     border: none;
-    border-radius: 1px;
     font-family: "Nunito", sans-serif;
     font-weight: bold;
     font-size: 20px;
