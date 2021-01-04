@@ -7,7 +7,7 @@ var wind = document.querySelector('.wind');
 var button = document.querySelector('.submit');
 
 
-button.addEventListener('click', function(name) {
+searchbox.addEventListener('click', function(name) {
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' + input.value + '&appid=5f0ce22b4d50f95750ee5c6d75d04a19')
         .then(response => response.json())
         .then(data => {
@@ -17,6 +17,8 @@ button.addEventListener('click', function(name) {
             var windValue = data['wind']['speed'];
             var lon = data['coord']['lon'];
             var lat = data['coord']['lat'];
+
+
 
             main.innerHTML = nameValue;
             desc.innerHTML = "Desc - " + descValue;
