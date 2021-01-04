@@ -1,3 +1,5 @@
+const theMarker = {};
+
 const api = {
     key: "5f0ce22b4d50f95750ee5c6d75d04a19",
     base: "https://api.openweathermap.org/data/2.5/"
@@ -30,12 +32,26 @@ function displayResults(weather) {
     let temp = document.querySelector('.current .temp');
     temp.innerHTML = `${Math.round(weather.main.temp)}<span>°c</span>`;
 
+    let wind = document.querySelector('.current .wind');
+    wind.innerText = weather.wind.speed + ' knots';
+
     let weather_el = document.querySelector('.current .weather');
     weather_el.innerText = weather.weather[0].main;
 
     let hilow = document.querySelector('.hi-low');
     hilow.innerText = `${Math.round(weather.main.temp_min)}°c / ${Math.round(weather.main.temp_max)}°c`;
+
+
+    var lonValue = weather.coord.lon;
+    var latValue = weather.coord.lat;
+
+
+
+
 }
+
+
+
 
 function dateBuilder(d) {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -47,4 +63,13 @@ function dateBuilder(d) {
     let year = d.getFullYear();
 
     return `${day} ${date} ${month} ${year}`;
+}
+
+
+function getLon() {
+    text2: lonValue;
+}
+
+function getLat() {
+    text1: latValue;
 }
