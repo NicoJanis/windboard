@@ -5,9 +5,9 @@
 }
 
 #map {
-	width: 80%;
-	margin: auto;
-	height: 40vh;
+    width: 80%;
+    margin: auto;
+    height: 40vh;
 }
 
 body {
@@ -16,23 +16,24 @@ body {
 }
 
 .input {
-	width: 90%;
+    width: 90%;
     text-align: center;
     margin: 100px auto;
 }
 
 .submit {
-	width: 19.9%;
+    width: 19.9%;
     background: #56cfff;
     border: none;
     font-family: "Nunito", sans-serif;
     font-weight: bold;
     font-size: 20px;
-	cursor: pointer;
+    cursor: pointer;
+    border-radius: 15px;
 }
 
 .submit:hover {
-	background: #2a3f95;
+    background: #2a3f95;
 }
 
 .input_text {
@@ -51,7 +52,7 @@ body {
     height: auto;
     margin: 50px auto;
     border-radius: 2px;
-	padding: 20px 0;
+    padding: 20px 0;
 }
 
 .close {
@@ -71,6 +72,7 @@ body {
     margin: 40px 0;
     font-size: 20px;
 }
+
 
 /*
 Colours:
