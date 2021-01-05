@@ -8,6 +8,7 @@
     <title>OpenWeatherMap Api</title>
     <link rel="stylesheet" href="css/stylesheet-api.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
@@ -26,23 +27,30 @@
                     <input type="text" autocomplete="off" class="search-box" placeholder="Search for a city..." />
                 </header>
                 <main>
-                    <section class="location">
-                        <div class="city">Vienna, AT</div>
-                        <div class="date">Thursday 10 January 2020</div>
-                    </section>
-                    <div class="current">
-                        <div class="temp">15<span>°c</span></div>
-                        <div class="wind">15<span>knots</span></div>
-                        <div class="weather">Sunny</div>
-                        <div class="hi-low">13°c / 16°c</div>
-                    </div>
+					<div class="data">
+						<section class="location">
+							<div class="city">Vienna, AT</div>
+							<div class="date">Sunday 10 January 2021</div>
+						</section>
+						<section class="current">
+							<div class="temp">15<span>°C</span></div>
+							<div class="hi-low">13 / 16</div>
+							<div class="wind">15<span>kn</span></div>
+							<div class="weather">Sunny</div>
+						</section>
+					</div>
+					<div class="spacer">
+						<div class></div>
+					</div>
+					<div class="map">
+						<div id="map"></div>
+					</div>
                 </main>
             </div>
 
         </div>
 
 
-        <div id="map"></div>
         <script>
             var map = L.map('map').setView([50, 50], 2);
             L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=hYjlwswSlN8Zv1WWYFGT', {
@@ -81,16 +89,16 @@
                 date.innerText = dateBuilder(now);
 
                 let temp = document.querySelector('.current .temp');
-                temp.innerHTML = `${Math.round(weather.main.temp)}<span>°c</span>`;
+                temp.innerHTML = `${Math.round(weather.main.temp)}<span>°C</span>`;
 
                 let wind = document.querySelector('.current .wind');
-                wind.innerText = weather.wind.speed + ' knots';
+                wind.innerHTML = weather.wind.speed + "<span>kn<span>";
 
                 let weather_el = document.querySelector('.current .weather');
                 weather_el.innerText = weather.weather[0].main;
 
                 let hilow = document.querySelector('.hi-low');
-                hilow.innerText = `${Math.round(weather.main.temp_min)}°c / ${Math.round(weather.main.temp_max)}°c`;
+                hilow.innerText = `${Math.round(weather.main.temp_min)} / ${Math.round(weather.main.temp_max)}`;
 
 
                 var lonValue = weather.coord.lon;
@@ -101,7 +109,7 @@
                 };
 
                 theMarker = L.marker([latValue, lonValue]).addTo(map);
-                theMarker.bindPopup(" <b > " + `${weather.name}, ${weather.sys.country}` + "<br>" + "Desc - " + weather.weather[0].main + "<br>" + "Temp - " + `${Math.round(weather.main.temp)}<span>°c</span>` + "<br>" + "Windspeed - " + weather.wind.speed + ' knots');
+                theMarker.bindPopup(`${weather.name}, ${weather.sys.country}` + "<br>" + "Desc - " + weather.weather[0].main + "<br>" + "Temp - " + `${Math.round(weather.main.temp)}<span>°C</span>` + "<br>" + "Windspeed - " + weather.wind.speed + ' knots');
 
 
             }
