@@ -136,46 +136,14 @@
             }
         </script>
 
-        <!--//set view var map = L.map('map').setView([0, 0], 2); //set Map L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=hYjlwswSlN8Zv1WWYFGT', { attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a>            <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>', }).addTo(map); //calls API var input = document.querySelector('.input_text'); var main = document.querySelector('#name'); var temp =
-                document.querySelector('.temp');
-                var desc = document.querySelector('.desc');
-                var clouds = document.querySelector('.clouds');
-                var wind = document.querySelector('.wind');
-                var button = document.querySelector('.submit');
-                var minmax = document.querySelector('.min-max');
-                var theMarker = {};
-                const searchbox = document.querySelector('.search-box');
-                searchbox.addEventListener('keypress', function(name) {
-                            fetch('https://api.openweathermap.org/data/2.5/weather?q=' + input.value + '&appid=5f0ce22b4d50f95750ee5c6d75d04a19')
-                                .then(response => response.json()).then(data => {
-                                        var tempValue = Math.round(data['main']['temp'] - 273.15);
-                                        var nameValue = data['name'];
-                                        var descValue = data['weather'][0]['description'];
-                                        var tempicon = data['main']
-                                        var windValue = data['wind']['speed'];
-                                        var lonValue = data['coord']['lon'];
-                                        var latValue = data['coord']['lat'];
-                                        var minValue = Math.round(data['main']['temp_min'] - 273.15);
-                                        var maxValue = Math.round(data['main']['temp_max'] - 273.15);
-                                        main.innerHTML = nameValue;
-                                        desc.innerHTML = "Desc - " + descValue;
-                                        temp.innerHTML = "Temperature - " + tempValue + "°C";
-                                        wind.innerHTML = "Windspeed - " + windValue + " kn";
-                                        minmax.innerHTML = "From - " + minValue + "° to " + maxValue + "°"; //add map marker and remove when a new
-                                        one is added
-                                        if (theMarker != undefined) {
-                                            map.removeLayer(theMarker);
-                                        };
-                                        theMarker = L.marker([latValue, lonValue]).addTo(map);
-                                        theMarker.bindPopup(" <
-                                                b > " + nameValue + " < /b>" + "<br>" + "Desc - " + descValue + "<br>" + "Temp - " + tempValue + "<br>" + "Windspeed - " + windValue); input.value = ""; }) .catch(err => alert("Cityname not found")); })*/
-                                                -->
+
 
     </div>
-    </div>>
+    </div>
 
 
 
-</body>>
 
-</html>>
+</body>
+
+</html>
