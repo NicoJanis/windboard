@@ -62,3 +62,9 @@ section img {
 #road {
     z-index: 2;
 }
+
+#board {
+    padding-top: 10%;
+    max-width: 30%;
+    height: 100%;
+}
