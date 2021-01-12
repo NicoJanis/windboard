@@ -11,19 +11,36 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <div class="spacer"></div>
     <div id="background"></div>
+=======
+    <div class="spacer">
+        <h2 id="text">Windboard</h2>
+    </div>
+>>>>>>> 98af904254c46bebccaeca71f2cfeb4c0404e856
     <img src="images/boardFINAL.png" id="board">
+
+
+
     <script type="text/javascript">
         let board = document.getElementById("board");
+<<<<<<< HEAD
         let bg = document.getElementById("background");
+=======
+        let text = document.getElementById("text");
+>>>>>>> 98af904254c46bebccaeca71f2cfeb4c0404e856
 
         window.addEventListener('scroll', function() {
             var value = window.scrollY;
 
             board.style.top = value * 0.85 + 400 + 'px';
+<<<<<<< HEAD
             bg.style.top = value * 1 + 'px';
             bg.style.opacity = 1 - value * 0.0015;
+=======
+            text.style.top = value * 1 + 'px';
+>>>>>>> 98af904254c46bebccaeca71f2cfeb4c0404e856
         })
     </script>
 
