@@ -11,15 +11,22 @@
 </head>
 
 <body>
-    <div class="spacer"></div>
+    <div class="spacer">
+        <h2 id="text">Windboard</h2>
+    </div>
     <img src="images/boardFINAL.png" id="board">
+
+
+
     <script type="text/javascript">
         let board = document.getElementById("board");
+        let text = document.getElementById("text");
 
         window.addEventListener('scroll', function() {
             var value = window.scrollY;
 
             board.style.top = value * 0.85 + 400 + 'px';
+            text.style.top = value * 1 + 'px';
         })
     </script>
 

@@ -25,12 +25,20 @@ body {
     width: 250px;
 }
 
+#text {
+    color: blue;
+    font-size: 200px;
+    z-index: -1;
+    text-align: center;
+}
+
 .team-boxed {
     color: #313437;
     background-color: #eef4f7;
 }
 
 .team-boxed p {
+    z-index: 2;
     color: #7d8285;
 }
 
@@ -172,7 +180,7 @@ a:hover i,
     padding-top: 5%;
 }
 
-.video-container iframe, 
+.video-container iframe,
 .video-container object,
 .video-container embed {
     width: 100%;
