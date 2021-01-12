@@ -190,6 +190,7 @@ a:hover i,
     padding-top: 5%;
 }
 
+.video-container iframe,
 .video-container object,
 .video-container embed {
     width: 100%;
