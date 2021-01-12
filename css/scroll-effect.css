@@ -20,10 +20,9 @@ body {
     left: 0;
     height: 80%;
     pointer-events: none;
-    max-width: 15%;
     max-height: 100%;
     z-index: -1;
-    width: 100%;
+    width: 250px;
 }
 
 .team-boxed {
