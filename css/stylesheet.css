@@ -459,6 +459,18 @@ ul.social-network li {
 
 .container {
     width: 100%;
+    padding-bottom: 5%;
+}
+
+#button {
+    width: 100px;
+    height: 50px;
+    font-size: large;
+}
+
+#image {
+    width: 200px;
+    height: 200px;
 }
 
 .card-block {
