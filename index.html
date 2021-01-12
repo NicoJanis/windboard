@@ -42,7 +42,7 @@
     </script>
 
     <div class="wrapper">
-        <header>
+        <header class="top-header">
             <nav>
                 <div class="menu-icon">
                     <i class="fa fa-bars fa-2x"></i>
@@ -67,22 +67,142 @@
         <div class="content" data-aos="fade-up">
 
             <p>
-                Windsurfing isn't just a sport which is extremely fun, it is a lifestyle. We at Winboard have made it our goal to give you the best posible experience while windsurfing. With our site you can get the weather-data from your favourite windsurf spots at
+                Windsurfing isn't just a sport which is extremely fun, it is a lifestyle. We at Winboard have made it our goal to give you the best possible experience while windsurfing. With our site you can get the weather-data from your favourite windsurf spots at
                 every time. <br><br>We do not just inform you about the weather, we inform you about everything there is to know if you want to go windsurfing at your spot. With our account system you can easyly connect with others and
                 talk about your experiences or ask them for recommendations for surfing. <br> <br>We at Windboard personalise your experience on our website and make it as easy for you as posible to reach the information you need. Choose your favourite
                 spots and mark them, so we can always show you the latest news.
             </p>
-            <br>
-            <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-                desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-            </p>
         </div>
     </div>
 
+    <div class="main">
+        <!-- set output value, dipslayed in html conatiner   -->
+        <div class="app-section">
+            <div class="app-wrap">
+                <header class="app-header">
+                    <div>
+                        <input type="text" autocomplete="off" class="search-box" placeholder="Search for a city..." />
+                    </div>
+                </header>
+                <main class="app-main">
+                    <div class="data">
+                        <div class="text">
+                            <section class="location">
+                                <div class="city">Vienna, AT</div>
+                                <div class="date">Sunday 10 January 2021</div>
+                            </section>
+                            <section class="current">
+                                <div class="temp">15<span>°C</span></div>
+                                <div class="hi-low">13 / 16</div>
+                                <div class="wind">15<span>kn</span></div>
+                                <div class="weather">Sunny</div>
+                            </section>
+                        </div>
+                        <div class="spacer">
+                            <div id="div0"></div>
+                            <div id="div1"></div>
+                        </div>
+                    </div>
+                    <div class="map">
+                        <div id="map"></div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <script>
+            var map = L.map('map').setView([50, 50], 2);
+            L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=hYjlwswSlN8Zv1WWYFGT', {
+                attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a><a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+            }).addTo(map);
+
+            var theMarker = {};
+
+            const api = {
+                key: "5f0ce22b4d50f95750ee5c6d75d04a19",
+                base: "https://api.openweathermap.org/data/2.5/"
+            }
+
+            const searchbox = document.querySelector('.search-box');
+            searchbox.addEventListener('keypress', setQuery);
+
+            function setQuery(evt) {
+                if (evt.keyCode == 13) {
+                    getResults(searchbox.value);
+                }
+            }
+
+            function getResults(query) {
+                fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+                    .then(weather => {
+                        return weather.json();
+                    }).then(displayResults);
+            }
+
+            function displayResults(weather) {
+                let city = document.querySelector('.location .city');
+                city.innerText = `${weather.name}, ${weather.sys.country}`;
+
+                let now = new Date();
+                let date = document.querySelector('.location .date');
+                date.innerText = dateBuilder(now);
+
+                let temp = document.querySelector('.current .temp');
+                temp.innerHTML = `${Math.round(weather.main.temp)}<span>°C</span>`;
+
+                let wind = document.querySelector('.current .wind');
+                wind.innerHTML = weather.wind.speed + "<span>kn<span>";
+
+                let weather_el = document.querySelector('.current .weather');
+                weather_el.innerText = weather.weather[0].main;
+
+                let hilow = document.querySelector('.hi-low');
+                hilow.innerText = `${Math.round(weather.main.temp_min)} / ${Math.round(weather.main.temp_max)}`;
 
 
+                var lonValue = weather.coord.lon;
+                var latValue = weather.coord.lat;
+
+                if (theMarker != undefined) {
+                    map.removeLayer(theMarker);
+                };
+
+                theMarker = L.marker([latValue, lonValue]).addTo(map);
+                theMarker.bindPopup(`${weather.name}, ${weather.sys.country}` + "<br>" + "Desc - " + weather.weather[0].main + "<br>" + "Temp - " + `${Math.round(weather.main.temp)}<span>°C</span>` + "<br>" + "Windspeed - " + weather.wind.speed + ' knots');
+
+                localStorage.setItem("name", "John Doe");
+
+                readLS();
+            }
+
+            function dateBuilder(d) {
+                let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+                let day = days[d.getDay()];
+                let date = d.getDate();
+                let month = months[d.getMonth()];
+                let year = d.getFullYear();
+
+                return `${day} ${date} ${month} ${year}`;
+            }
+
+
+            function getLon() {
+                text2: lonValue;
+            }
+
+            function getLat() {
+                text1: latValue;
+            }
+
+            function readLS() {
+                console.log(localStorage.getItem("name"));
+
+            }
+        </script>
+    </div>
+    
 
 
 
