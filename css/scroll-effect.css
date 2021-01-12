@@ -149,7 +149,7 @@ nav i:hover {
 
 #board {
     position: absolute;
-    top: 400px;
+    top: 600px;
     left: 0;
     height: 80%;
     pointer-events: none;
