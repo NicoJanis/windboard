@@ -148,6 +148,12 @@ nav i:hover {
     width: 250px;
 }
 
+@media (max-width: 900px) {
+    #board {
+        display: none;
+    }
+}
+
 #text {
     color: blue;
     font-size: 200px;
@@ -158,6 +164,8 @@ nav i:hover {
 .team-boxed {
     color: #313437;
     background-color: #eef4f7;
+    position: relative;
+    z-index: 2;
 }
 
 .team-boxed p {
@@ -308,6 +316,13 @@ a:hover i,
     height: 100%;
 }
 
+@media (max-width: 900px) {
+    .video {
+        margin-left: 3%;
+        width: 94%;
+    }
+}
+
 
 /* ---------- FOOTER ---------- */
 
@@ -316,6 +331,8 @@ footer {
     background: -webkit-linear-gradient(59deg, #3A6073, #16222A);
     background: linear-gradient(59deg, #3A6073, #16222A);
     color: white;
+    position: relative;
+    z-index: 2;
 }
 
 footer a {
