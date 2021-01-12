@@ -11,7 +11,17 @@ body {
 
 .spacer {
     height: 100vh;
-    width: 100vh;
+    width: 100%;
+}
+
+#background {
+    background-image: url("../images/wave.jpg");
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    z-index: -2;
+    opacity: 1
 }
 
 #board {

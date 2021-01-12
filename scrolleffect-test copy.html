@@ -12,14 +12,18 @@
 
 <body>
     <div class="spacer"></div>
+    <div id="background"></div>
     <img src="images/boardFINAL.png" id="board">
     <script type="text/javascript">
         let board = document.getElementById("board");
+        let bg = document.getElementById("background");
 
         window.addEventListener('scroll', function() {
             var value = window.scrollY;
 
             board.style.top = value * 0.85 + 400 + 'px';
+            bg.style.top = value * 1 + 'px';
+            bg.style.opacity = 1 - value * 0.0015;
         })
     </script>
 
